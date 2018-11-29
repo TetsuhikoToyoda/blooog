@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col s12">
+    <%= form_for @blog do |f| %>
+      <div class="row">
+        <div class="input-field col s6">
+          <div class="materialize-textarea">
+          <%= f.text_area :text, placeholder: "内容を書いてね！" %>
+          </div>
+          <div class="materialize-textarea">
+          <%= f.text_area :image, placeholder: "写真のURLを貼ってね！" %>
+          </div>
+        </div>
+        <%= button_tag type: "submit" do %><i class="material-icons left"></i>投稿する</a>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="col s12 m7">
+  <div class="yellow accent-4">
+  <h2 class="header">All Banana!!</h2>
+  </div>
+    <% @blogs.each do |blog| %>
+      <div class="card horizontal">
+        <% if blog.id.odd? %>
+          <div class="card-image">
+            <img src="<%= blog.image %>">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <%= simple_format(blog.text) %>
+            </div>
+            <% if user_signed_in? && current_user.id == blog.user_id %>
+              <ul class="card-action">
+                <li class="yellow accent-4">
+                  <%= link_to 'Edit Banana', "/blogs/#{blog.id}/edit", method: :post %>
+                </li>
+                <li class="blue darken-3">
+                  <%= link_to 'Delete Banana', "/blogs/#{blog.id}", method: :delete %>
+                </li>
+              </ul>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="card-stacked">
+            <div class="card-content">
+              <%= simple_format(blog.text) %>
+            </div>
+            <% if user_signed_in? && current_user.id == blog.user_id %>
+              <ul class="card-action">
+                <li class="yellow accent-4">
+                  <%= link_to 'Edit Banana', "/blogs/#{blog.id}/edit", method: :post %>
+                </li>
+                <li class="blue darken-3">
+                  <%= link_to 'Delete Banana', "/blogs/#{blog.id}", method: :delete %>
+                </li>
+              </ul>
+            <% end %>
+          </div>
+          <div class="card-image">
+            <img src="<%= blog.image %>">
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+</div>
